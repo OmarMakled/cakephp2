@@ -26,14 +26,14 @@ export default {
 <template>    
   <v-row>
     <v-col
-      v-for="(retail, index) in retailes"
+      v-for="(item, index) in retailes"
       :key="index"
       cols="12"
-      md="3"
+      md="6"
     >
       <RetaileCard
         :key="index"
-        :retail="retail"
+        :item="item"
       />
     </v-col>
   </v-row>

@@ -6,7 +6,8 @@ Create a docker container for PHP demos ONLY
 
 ### DB
 
-`http://localhost:3000/adminer.php`
+`http://localhost:3000/adminer.php` 
+`import src/db.sql`
 
 ```
 docker-compose exec db /bin/sh
@@ -18,7 +19,7 @@ mysql -u root -p secret
 docker-compose exec php composer install
 ```
 
-cakephp
+### cakephp
 ```
 composer create-project --prefer-dist cakephp/cakephp=2.x 
 require cakephp/debug_kit "^2.2.0"
@@ -28,3 +29,6 @@ database.php
 Config/core.php
 app/Config/bootstrap.php CakePlugin::loadAll();
 ```
+
+### API
+GET `http://localhost:3000/api/retailes`

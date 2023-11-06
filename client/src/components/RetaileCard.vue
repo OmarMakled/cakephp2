@@ -2,24 +2,24 @@
   <v-card>
     <v-card-text>
       <div class="font-weight-bold ms-1 mb-2">
-        Retail: {{ retail.name }}
+        Retail: {{ item.Retailer.name }}
       </div>
 
       <v-timeline density="compact" align="start">
         <v-timeline-item
-          v-for="(day, index) in retail.items"
+          v-for="(row, index) in item.WorkingHour"
           :key="index"
           size="x-small"
         >
           <div class="mb-4">
-            <div class="font-weight-normal" v-if="day?.dayoff">
-              <v-icon>mdi-door-sliding</v-icon> Dayoff
+            <div class="font-weight-normal" v-if="row.is_dayoff === '1'">
+              <strong>{{row.day}} </strong> <v-icon class="mr-1">mdi-door-sliding</v-icon> Dayoff
             </div>
-            <div v-else>
-              <v-icon aria-hidden="false">
+            <div class="font-weight-normal" v-else>
+              <v-icon class="mr-1">
                 mdi-clock-alert-outline
               </v-icon>
-              <strong>{{day.title}} </strong> {{ day.from }} to {{ day.to }}
+              <strong>{{row.day}} </strong> {{ row.from }} <v-icon>mdi-chevron-right</v-icon>  {{ row.to }}
             </div>
           </div>
         </v-timeline-item>
@@ -30,7 +30,7 @@
   <script>
     export default {
         props: {
-        retail: {
+        item: {
             type: Object,
             required: true
         }
